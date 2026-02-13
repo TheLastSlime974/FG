@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Page d'acceuil - Espace Élèves - vghjhjgcsdhjkhjkcghfg</title>
+    <title>Page d'accueil - Espace Élèves</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,12 +19,25 @@
 </head>
 <body>
 
-    <h1>Bienvenue sur FG Games 🎮</h1>
-    <p>Site pour mes amis 😎</p>
+<script>
+const motDePasse = "Tipitou974!"; // 🔑 change ton mot de passe ici
 
-    <!-- Boutons avec liens à modifier -->
-    <button onclick="window.location.href='https://bloxd.io/game/bedwars_4v4v4v4'">Bedwars</button>
-    <button onclick="window.location.href='https://rocketgoal.io/'">Rocket league</button>
+let saisie = prompt("Entre le mot de passe :");
+
+if (saisie !== motDePasse) {
+    // 🔁 Redirection vers Google si mauvais mot de passe
+    window.location.href = "https://www.google.com";
+} else {
+    // ✅ Affichage du site si bon mot de passe
+    document.body.innerHTML = `
+        <h1>Bienvenue sur FG Games 🎮</h1>
+        <p>Site pour mes amis 😎</p>
+
+        <button onclick="window.location.href='https://bloxd.io/game/bedwars_4v4v4v4'">Bedwars</button>
+        <button onclick="window.location.href='https://rocketgoal.io/'">Rocket league</button>
+    `;
+}
+</script>
 
 </body>
 </html>
