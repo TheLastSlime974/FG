@@ -19,6 +19,10 @@
             padding: 10px;
             font-size: 16px;
         }
+        #imageContainer img {
+            width: 200px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -40,11 +44,11 @@
         Rocket League
     </button>
 
-    <div id="imageContainer"></div>
+    <div id="imageContainer"></div> <!-- Conteneur pour l'image -->
 </div>
 
 <script>
-const motDePasse = "Tipitou974!"; // ici il reste dans le code, invisible quand on tape
+const motDePasse = "Tipitou974!";
 
 function verifierMDP() {
     const saisie = document.getElementById("mdpInput").value;
@@ -55,16 +59,17 @@ function verifierMDP() {
         // Montre le contenu
         document.getElementById("content").style.display = "block";
 
-        // Détecter Entrée pour l'image
+        // 🔹 Détecter la touche Entrée pour l'image
         document.addEventListener("keydown", function(event) {
             if(event.key === "Enter") {
                 const container = document.getElementById("imageContainer");
+
+                // Vérifie si l'image existe déjà
                 if (!document.getElementById("surprise")) {
                     const img = document.createElement("img");
-                    img.src = "surprise.png";
+                    img.src = "surprise.png"; // ton image
                     img.id = "surprise";
                     img.alt = "Surprise !";
-                    img.style.width = "200px";
                     container.appendChild(img);
                 }
             }
@@ -75,6 +80,19 @@ function verifierMDP() {
         window.location.href = "https://www.google.com";
     }
 }
+</script>
+
+<!-- 🔹 Tawk.to Chat -->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/698f163385e35c1c3911e648/1jhbetes8';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
 
 </body>
