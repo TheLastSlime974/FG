@@ -20,32 +20,34 @@
 <body>
 
 <script>
-const motDePasse = "Tipitou974!"; // 🔑 change ton mot de passe ici
+const motDePasse = "Tipitou974!"; 
 
 let saisie = prompt("Entre le mot de passe :");
 
 if (saisie !== motDePasse) {
 
-    // ❌ Message affiché
     document.body.innerHTML = `
         <h1>Le site est bloqué par votre administrateur.</h1>
         <p>Accès non autorisé. Redirection...</p>
     `;
 
-    // 🔁 Redirection après 2 secondes
     setTimeout(function() {
         window.location.href = "https://www.google.com";
     }, 2000);
 
 } else {
 
-    // ✅ Accès autorisé
     document.body.innerHTML = `
         <h1>Bienvenue sur FG Games 🎮</h1>
         <p>Site pour mes amis 😎</p>
 
-        <button onclick="window.location.href='https://bloxd.io/game/bedwars_4v4v4v4'">Bedwars</button>
-        <button onclick="window.location.href='https://rocketgoal.io/'">Rocket league</button>
+        <button onclick="window.open('https://bloxd.io/game/bedwars_4v4v4v4', '_blank')">
+            Bedwars
+        </button>
+
+        <button onclick="window.open('https://rocketgoal.io/', '_blank')">
+            Rocket League
+        </button>
     `;
 }
 </script>
