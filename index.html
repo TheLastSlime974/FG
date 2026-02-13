@@ -51,6 +51,23 @@ if (saisie !== motDePasse) {
         <button onclick="window.open('https://rocketgoal.io/', '_blank')">
             Rocket League
         </button>
+        // Détecter la touche Entrée
+    document.addEventListener("keydown", function(event) {
+        if(event.key === "Enter") {
+            const container = document.getElementById("imageContainer");
+
+            // Vérifie si l'image existe déjà
+            if (!document.getElementById("surprise")) {
+                const img = document.createElement("img");
+                img.src = "surprise.png"; // <-- ton image du repo
+                img.id = "surprise";
+                img.alt = "Surprise !";
+                img.style.width = "200px"; // taille de l'image
+                container.appendChild(img);
+            }
+        }
+});
+
     `;
 }
 </script>
