@@ -33,18 +33,6 @@
         }
     </style>
 
-    <!-- Chat Crisp -->
-    <script type="text/javascript">
-    window.$crisp=[];
-    window.CRISP_WEBSITE_ID="73610771-4550-49a1-aea4-26e8c6e4abcf";
-    (function(){
-        d=document;
-        s=d.createElement("script");
-        s.src="https://client.crisp.chat/l.js";
-        s.async=1;
-        d.getElementsByTagName("head")[0].appendChild(s);
-    })();
-    </script>
 
 </head>
 <body>
@@ -79,11 +67,25 @@ function verifierMDP() {
     if(saisie === motDePasse){
         document.getElementById("loginDiv").style.display = "none";
         document.getElementById("content").style.display = "block";
+
+        // ✅ Charger Crisp seulement après mot de passe
+        window.$crisp=[];
+        window.CRISP_WEBSITE_ID="73610771-4550-49a1-aea4-26e8c6e4abcf";
+
+        (function(){
+            var d=document;
+            var s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+
     } else {
-        alert("Mauvais mot de passe ! Le site est bloqué.");
+        alert("Mauvais mot de passe !");
         window.location.href = "https://www.google.com";
     }
 }
+
 
 // Image plein écran avec Entrée
 document.addEventListener("keydown", function(event) {
