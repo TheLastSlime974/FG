@@ -20,7 +20,6 @@
             font-size: 16px;
         }
 
-        /* Image plein écran */
         #fullImage {
             position: fixed;
             top: 0;
@@ -37,7 +36,8 @@
         }
     </style>
 </head>
-<body style='background-color:white'>
+
+<body style="background-color:white">
 
 <h1>Bienvenue sur FG</h1>
 <p>Site pour les potes</p>
@@ -49,8 +49,9 @@
 
 <div id="content" style="display:none;">
     <hr>
-    <p style='color:green'>Les bases</p>
+    <p style="color:green">Les bases</p>
     <hr>
+
     <button onclick="window.open('https://bloxd.io/game/bedwars_4v4v4v4', '_blank')">Bedwars</button>
     <button onclick="window.open('https://rocketgoal.io/', '_blank')">Rocket League</button>
     <button onclick="window.open('https://slither.io/', '_blank')">Slither.io</button>
@@ -63,50 +64,51 @@
     <button onclick="window.open('https://slopegame.io/geometry-dash/', '_blank')">Geometry Dash</button>
     <button onclick="window.open('https://sso.ac-reunion.fr/login?service=https%3A%2F%2Fhubole.ac-reunion.fr%2Fedispatcher%2Fng%2Fhub', '_blank')">Pronote</button>
 
-    <!-- Chat apparaîtra ici -->
     <div id="chatContainer"></div>
 </div>
 
 <script>
-const motDePasse = "Tipitou974!";
+const mdpComplet = "Tipitou974!";
+const mdpSansGauche = "Invite974!";
 
 function verifierMDP() {
+
     const saisie = document.getElementById("mdpInput").value;
 
-    if(saisie === motDePasse){
+    if(saisie === mdpComplet || saisie === mdpSansGauche){
+
         document.getElementById("loginDiv").style.display = "none";
         document.getElementById("content").style.display = "block";
 
-        // ✅ Charger le nouveau Chatango seulement après mot de passe
-        // ✅ Premier chat (freegameschat974)
-var script1 = document.createElement("script");
-script1.id = "cid0020000432055617108";
-script1.async = true;
-script1.src = "//st.chatango.com/js/gz/emb.js";
-script1.setAttribute("data-cfasync","false");
-script1.style.width = "200px";
-script1.style.height = "300px";
-script1.innerHTML = '{"handle":"freegameschat974","arch":"js","styles":{"a":"404040","b":58,"c":"FFFFFF","d":"FFFFFF","f":58,"i":58,"k":"404040","l":"404040","m":"404040","n":"FFFFFF","o":58,"p":"10","q":"404040","r":58,"pos":"br","cv":1,"cvbg":"404040","cvbga":58,"cvw":58,"cvh":18}}';
+        // 🔵 Chat de droite (toujours chargé)
+        var script1 = document.createElement("script");
+        script1.id = "cid0020000432055617108";
+        script1.async = true;
+        script1.src = "//st.chatango.com/js/gz/emb.js";
+        script1.setAttribute("data-cfasync","false");
+        script1.style.width = "200px";
+        script1.style.height = "300px";
+        script1.innerHTML = '{"handle":"freegameschat974","arch":"js","styles":{"a":"404040","b":58,"c":"FFFFFF","d":"FFFFFF","f":58,"i":58,"k":"404040","l":"404040","m":"404040","n":"FFFFFF","o":58,"p":"10","q":"404040","r":58,"pos":"br","cv":1,"cvbg":"404040","cvbga":58,"cvw":58,"cvh":18}}';
 
-document.getElementById("chatContainer").appendChild(script1);
+        document.getElementById("chatContainer").appendChild(script1);
 
+        // 🔵 Chat de gauche seulement si MDP complet
+        if(saisie === mdpComplet){
 
-// ✅ Deuxième chat (freegames974)
-var script2 = document.createElement("script");
-script2.id = "cid0020000432148741089";
-script2.async = true;
-script2.src = "//st.chatango.com/js/gz/emb.js";
-script2.setAttribute("data-cfasync","false");
-script2.style.width = "214px";
-script2.style.height = "331px";
-script2.innerHTML = '{"handle":"freegames974","arch":"js","styles":{"a":"bbbbbb","c":"000000","d":"000000","f":0,"i":0,"k":"bbbbbb","l":"bbbbbb","m":"bbbbbb","p":"10","q":"bbbbbb","pos":"bl","cv":1,"cvbg":"bbbbbb","cvbga":0,"cvfg":"000000","cvw":82,"cvh":36,"cnrs":"0.35","fwtickm":1}}';
+            var script2 = document.createElement("script");
+            script2.id = "cid0020000432148741089";
+            script2.async = true;
+            script2.src = "//st.chatango.com/js/gz/emb.js";
+            script2.setAttribute("data-cfasync","false");
+            script2.style.width = "214px";
+            script2.style.height = "331px";
+            script2.innerHTML = '{"handle":"freegames974","arch":"js","styles":{"a":"bbbbbb","c":"000000","d":"000000","f":0,"i":0,"k":"bbbbbb","l":"bbbbbb","m":"bbbbbb","p":"10","q":"bbbbbb","pos":"bl","cv":1,"cvbg":"bbbbbb","cvbga":0,"cvfg":"000000","cvw":82,"cvh":36,"cnrs":"0.35","fwtickm":1}}';
 
-document.getElementById("chatContainer").appendChild(script2);
-
+            document.getElementById("chatContainer").appendChild(script2);
+        }
 
     } else {
 
-        // Afficher message rouge avant redirection
         let message = document.getElementById("errorMessage");
 
         if(!message){
@@ -120,7 +122,6 @@ document.getElementById("chatContainer").appendChild(script2);
 
         message.textContent = "Vous n'êtes pas autorisé à utiliser ce site. Nous allons en informer votre administrateur. Redirection...";
 
-        // Attendre 2 secondes puis rediriger
         setTimeout(function() {
             window.location.href = "https://www.google.com";
         }, 5000);
@@ -130,15 +131,19 @@ document.getElementById("chatContainer").appendChild(script2);
 // Image plein écran avec Entrée
 document.addEventListener("keydown", function(event) {
     if(event.key === "Enter") {
+
         const contentDiv = document.getElementById("content");
 
         if(contentDiv.style.display === "block" && !document.getElementById("fullImage")) {
+
             const img = document.createElement("img");
             img.src = "surprise.png";
             img.id = "fullImage";
             img.alt = "Surprise !";
 
-            img.addEventListener("click", function(){ img.remove(); });
+            img.addEventListener("click", function(){
+                img.remove();
+            });
 
             document.body.appendChild(img);
         }
