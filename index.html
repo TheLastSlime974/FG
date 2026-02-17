@@ -51,6 +51,9 @@
 
 
 <div id="content" style="display:none;">
+<input type="text" id="searchBar" onkeyup="searchGames()" 
+placeholder="Rechercher un jeu..." 
+style="width: 250px; padding: 6px; margin: 10px;">
 <hr>
 <h2 style="color:green">🔥 Jeux Multijoueur (Action & Combat)</h2>
 <hr>
@@ -241,7 +244,22 @@ document.addEventListener("keydown", function(event) {
     }
 });
 
+function searchGames() {
+  let input = document.getElementById("searchBar");
+  let filter = input.value.toLowerCase();
+  let buttons = document.getElementsByTagName("button");
+
+  for (let i = 0; i < buttons.length; i++) {
+    let txtValue = buttons[i].textContent || buttons[i].innerText;
+    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+      buttons[i].style.display = "";
+    } else {
+      buttons[i].style.display = "none";
+    }
+  }
+}
 </script>
+
 
 </body>
 </html>
