@@ -155,12 +155,12 @@ function verifierMDP() {
 
     const saisie = document.getElementById("mdpInput").value;
 
-    if(saisie === mdpComplet || saisie === mdpSansGauche || saisie === mdpAzerty){
+    if(saisie === mdpComplet || saisie === mdpSansGauche || saisie === mdpTroisieme){
         document.getElementById("loginDiv").style.display = "none";
         document.getElementById("content").style.display = "block";
 
     // 🔵 Chat de droite (toujours chargé) sauf pour "azerty"
-        if(saisie !== mdpAzerty){
+        if(saisie !== mdpTroisieme){
             var script1 = document.createElement("script");
             script1.id = "cid0020000432055617108";
             script1.async = true;
