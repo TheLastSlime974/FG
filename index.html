@@ -67,7 +67,6 @@ style="width: 250px; padding: 6px; margin: 10px;">
 <h2 style="color:green">🔥 Jeux Multijoueur (Action & Combat)</h2>
 <hr>
 <button onclick="window.open('https://polytoria.com/', '_blank')">Roblox de wish</button>
-<button onclick="window.open('https://bloxd.io/', '_blank')">Bloxd.io</button>
 <button onclick="loadGame('https://bloxd.io/')">Bloxd.io test</button>
 <button onclick="window.open('https://shellshock.io/', '_blank')">Shell Shockers</button>
 <button onclick="window.open('https://ev.io/', '_blank')">Ev.io</button>
@@ -250,6 +249,39 @@ function loadGame(url) {
     frame.src = url;
     frame.style.display = "block";
 }
+
+let modeDiscret = false;
+
+document.addEventListener("keydown", function(e){
+    if(e.key === "F9"){
+
+        modeDiscret = !modeDiscret;
+
+        if(modeDiscret){
+            // 🕶️ MODE DISCRET ACTIVÉ
+            document.body.style.backgroundColor = "white";
+            document.body.style.backgroundImage = "none";
+            document.body.style.color = "black";
+            document.title = "PRONOTE - Espace élèves - Metice Réunion";
+
+            // Cache les boutons de jeux
+            document.getElementById("content").style.display = "none";
+
+        } else {
+            // 🎮 RETOUR MODE NORMAL
+            document.body.style.backgroundColor = "";
+            document.body.style.backgroundImage = "url('surprise.png')";
+            document.body.style.backgroundSize = "contain";
+            document.body.style.backgroundRepeat = "no-repeat";
+            document.body.style.backgroundPosition = "center";
+            document.body.style.color = "white";
+            document.title = "FG - Site pour les amis !";
+
+            document.getElementById("content").style.display = "block";
+        }
+    }
+});
+
 
 // Image plein écran avec Entrée
 document.addEventListener("keydown", function(event) {
