@@ -45,14 +45,6 @@
         #chatContainer {
             margin-top: 40px;
         }
-        #overlayCatch {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
     </style>
 </head>
 
@@ -71,7 +63,6 @@ style="width: 250px; padding: 6px; margin: 10px;">
 <hr>
 <h2 style="color:green">🔥 Jeux Multijoueur (Action & Combat)</h2>
 <hr>
-<button onclick="chargerJeu('https://bloxd.io/')">Bloxd intégré</button>
 <button onclick="window.open('https://www.poxel.io', '_blank')">Poxel.io</button>
 <button onclick="window.open('https://polytoria.com/', '_blank')">Roblox de wish</button>
 <button onclick="window.open('https://bloxd.io/', '_blank')">Bloxd.io</button>
@@ -106,7 +97,7 @@ style="width: 250px; padding: 6px; margin: 10px;">
 <hr>
 <h2 style="color:green">⚽ Fun & Compétition</h2>
 <hr>
-<button onclick="window.open('https://playhop.com/fr/app/brawl-simulator-3d-462102', '_blank')">Brawl Stars</button>
+<button onclick="window.open('https://supercell.com/en/games/brawlstars/', '_blank')">Brawl Stars</button>
 <button onclick="window.open('https://poki.com/fr/g/rider', '_blank')">Rider</button>
 <button onclick="window.open('https://rocketgoal.io/', '_blank')">Rocket Goal</button>
 <button onclick="window.open('https://curvefever.pro/', '_blank')">Curve Fever Pro</button>
@@ -166,11 +157,6 @@ style="width: 250px; padding: 6px; margin: 10px;">
 <div id="gameContainer" style="margin-top:30px;">
     <iframe id="gameFrame"
             style="width:90%; height:600px; border:none; display:none;">
-    </iframe>
-    <iframe id="gameFrame"
-        width="100%"
-        height="600"
-        style="border:2px solid black;">
     </iframe>
 </div>
 </div>
@@ -259,14 +245,6 @@ function searchGames() {
   }
 }
 
-function chargerJeu(url) {
-    const frame = document.getElementById("gameFrame");
-    frame.src = url;
-
-    // IMPORTANT : garder le focus sur la page
-    window.focus();
-}
-
 let modeDiscret = false;
 
 document.addEventListener("keydown", function(e){
@@ -302,30 +280,19 @@ document.addEventListener("keydown", function(e){
 
 // Image plein écran avec Entrée
 document.addEventListener("keydown", function(event) {
-
     if(event.key === "Enter") {
-
-        // 🔥 Forcer le focus sur la page
-        window.focus();
-
-        const existingImage = document.getElementById("fullImage");
-
-        if(existingImage) {
-            existingImage.remove();
-        } else {
-            const img = document.createElement("img");
-            img.src = "surprise.png";
-            img.id = "fullImage";
-            img.style.position = "fixed";
-            img.style.top = "0";
-            img.style.left = "0";
-            img.style.width = "100vw";
-            img.style.height = "100vh";
-            img.style.objectFit = "contain";
-            img.style.backgroundColor = "black";
-            img.style.zIndex = "9999";
-
-            document.body.appendChild(img);
+        const contentDiv = document.getElementById("content");
+        if(contentDiv.style.display === "block") {
+            const existingImage = document.getElementById("fullImage");
+            if(existingImage) {
+                existingImage.remove();
+            } else {
+                const img = document.createElement("img");
+                img.src = "surprise.png";
+                img.id = "fullImage";
+                img.alt = "Surprise !";
+                document.body.appendChild(img);
+            }
         }
     }
 });
